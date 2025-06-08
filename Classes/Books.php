@@ -13,7 +13,7 @@ class Books{
     }
 
     public function getAll(){
-        return $this->connection->query("SELECT * FROM books ORDER BY copyright DESC");
+        return $this->connection->query("SELECT * FROM books ORDER BY copyright DESC LIMIT 5");
     }
     public function getById($isbn){
         return $this->connection->query("SELECT * FROM books WHERE isbn = $isbn");
@@ -45,7 +45,7 @@ class Books{
 
     public function searchBook($isbn){
         $isbn = $this->connection->real_escape_string($isbn);
-        return $this->connection->query("SELECT * FROM books WHERE isbn = $isbn");
+        return $this->connection->query("SELECT * FROM books WHERE isbn = $isbn ");
     }
 
     public function delete($isbn){
@@ -60,11 +60,11 @@ class Books{
     }
 
     public function uniqueCopyright(){
-        return $this->connection->query("SELECT DISTINCT copyright FROM books ORDER BY copyright DESC");
+        return $this->connection->query("SELECT DISTINCT copyright FROM books ORDER BY copyright");
     }
-     
+
     public function bookByCopyright($copyright){
-        return $this->connection->query("SELECT * FROM books WHERE copyright = $copyright");
+        return $this->connection->query("SELECT * FROM books WHERE copyright = $copyright LIMIT 5");
     }
 }
 

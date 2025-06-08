@@ -17,24 +17,24 @@ $copyrights = $book->uniqueCopyright();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="margin-left:500px; margin-top:50px;">
-<a href="add.php">Add Book</a><br><a href="search.php">Search for a book</a>
-
-<form method="post">
-            <label for="copyrights">Select Copyrights</label>
-            <select name="copyright" id="">
-                <?php while($row = $copyrights->fetch_assoc()): ?>
-                <option value="<?= htmlspecialchars($row['copyright'])?>"
-                 <?=(isset($_POST['copyright']) && $_POST['copyright'] == $row['copyright']) ? 'selected' :'' ?>>
-                    <?= htmlspecialchars($row['copyright'])?>
-                </option>
-                <?php endwhile; ?>
-            </select>
-            <button type="submit">Submit</button>
-</form>
-
-
+<body>
+     <header><h1>Book Management</h1></header>    
+    <a href="add.php">Add Book</a><br><a href="search.php">Search for a book</a>
+    <form method="post">
+                <label for="copyrights">Select Copyrights</label>
+                <select name="copyright" id="">
+                    <?php while($row = $copyrights->fetch_assoc()): ?>
+                    <option value="<?= htmlspecialchars($row['copyright'])?>"
+                    <?=(isset($_POST['copyright']) && $_POST['copyright'] == $row['copyright']) ? 'selected' :'' ?>>
+                        <?= htmlspecialchars($row['copyright'])?>
+                    </option>
+                    <?php endwhile; ?>
+                </select>
+                <button type="submit">Submit</button>
+    </form>
+<section class="main-container">
 <table border="1" style="border-collapse:collapse; ">
     <tr>
         <th>ISBN</th>
@@ -60,6 +60,6 @@ $copyrights = $book->uniqueCopyright();
     </tr>
     <?php endwhile; ?>
 </table>
-    
+</section>
 </body>
 </html>

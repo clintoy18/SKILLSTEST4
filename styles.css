@@ -1,0 +1,99 @@
+/* Body styling: Full viewport height + Flexbox for centering */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; /* Fix: 'auto' removed to avoid layout issues */
+    padding: 0;
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex; /* Fix: Changed from 'block' to 'flex' */
+    justify-content: center; /* Center content horizontally */
+    align-items: center;     /* Center content vertically */
+    flex-direction: column;  /* Added: stack items vertically */
+}
+
+/* Centered header */
+header {
+    text-align: center;
+}
+
+/* Main container for layout padding and width control */
+.main-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Form styling with card-style background and layout */
+form {  
+    background-color: #ffffff;
+    padding: 30px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling for spacing and emphasis */
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Inputs, textareas, selects: consistent styling */
+input,
+select,
+textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px; /* Fix: added 'px' unit to font-size */
+    margin-bottom: 10px; /* Added for spacing between fields */
+}
+
+/* Button styling */
+button {
+    padding: 10px;
+    background-color: #007BFF; /* Added: color for visibility */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3; /* Optional hover effect */
+}
+
+/* Simple table styling */
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Fix: center table with auto margins */
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+/* Table cells */
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Table header */
+th {
+    background-color: #f0f0f0;
+}
+
+/* Zebra-striping for better readability */
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+a{
+    text-decoration: none;
+    margin-right: 4px;
+}

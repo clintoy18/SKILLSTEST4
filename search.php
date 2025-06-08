@@ -13,21 +13,32 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
         <title>Document</title>
     </head>
-<body style="margin-left:500px; margin-top:50px;">
-        <header><h1>Search Book</h1></header>
-        <section>
-            <form action="" method="post">
+<body>
+        <header><h1>Search Book</h1></header> 
+           <form action="" method="post">
                 <label for="isbn">Enter ISBN</label>
                 <input type="text" name="isbn" value="" placeholder="Enter ISBN" required><br>
                 <button type="submit">Search</button>
-            </form>
-            <table border="1" style="border-collapse:collapse; ">        
+            </form>   
+        <section class="main-container">
+        
+            <table border="1">        
                 <?php if($result && $result->num_rows > 0): ?>
                         <?php while($row = $result->fetch_assoc()): ?>
-                        <tr>
-                        <td><?= htmlspecialchars($row['isbn'])?></td>
+                            <tr>
+                                <th>ISBN</th>
+                                <th>Title</th>
+                                <th>Copyright</th>
+                                <th>Edition</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        <tr>         
+                        <td ><?= htmlspecialchars($row['isbn'])?></td>
                         <td><?= htmlspecialchars($row['title'])?></td>
                         <td><?= htmlspecialchars($row['copyright'])?></td>
                         <td><?= htmlspecialchars($row['edition'])?></td>
@@ -40,13 +51,11 @@
                              
                     </tr>
                      <?php endwhile; ?>
-        <?php else: ?>
-                <td>No books found </td>      
-        <?php endif; ?>
-
-    </table>
-    <a href="index.php">Back</a>
-            
+                    <?php else: ?>
+                            <td>No books found </td>      
+                    <?php endif; ?>
+                </table>
         </section>
+            <a href="index.php">Back</a>
     </body>
     </html>
