@@ -3,7 +3,13 @@
 require_once "classes\Books.php";
 
 $book = new Books();
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $books = $book->bookByCopyright($_POST['copyright']);
+}else{
 $books = $book->getAll();
+}
+$copyrights = $book->uniqueCopyright();
 ?>
 
 <html lang="en">
@@ -14,6 +20,21 @@ $books = $book->getAll();
 </head>
 <body style="margin-left:500px; margin-top:50px;">
 <a href="add.php">Add Book</a><br><a href="search.php">Search for a book</a>
+
+<form method="post">
+            <label for="copyrights">Select Copyrights</label>
+            <select name="copyright" id="">
+                <?php while($row = $copyrights->fetch_assoc()): ?>
+                <option value="<?= htmlspecialchars($row['copyright'])?>"
+                 <?=(isset($_POST['copyright']) && $_POST['copyright'] == $row['copyright']) ? 'selected' :'' ?>>
+                    <?= htmlspecialchars($row['copyright'])?>
+                </option>
+                <?php endwhile; ?>
+            </select>
+            <button type="submit">Submit</button>
+</form>
+
+
 <table border="1" style="border-collapse:collapse; ">
     <tr>
         <th>ISBN</th>
